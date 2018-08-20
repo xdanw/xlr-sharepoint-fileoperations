@@ -1,0 +1,22 @@
+from office365.runtime.utilities.http_method import HttpMethod
+
+# Fixes some issues with TLS
+import os
+os.environ['REQUESTS_CA_BUNDLE'] = 'ca.pem';
+
+class RequestOptions(object):
+    """Request options"""
+
+    def __init__(self, url):
+        self.url = url
+        self.data = {}
+        self.headers = {}
+        self.auth = None
+        self.method = HttpMethod.Get
+
+    def set_header(self, name, value):
+        self.headers[name] = value
+
+    def set_headers(self, headers):
+        for key in headers:
+            self.set_header(key, headers[key])

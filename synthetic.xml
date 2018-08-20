@@ -1,0 +1,70 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<synthetic xsi:schemaLocation="http://www.xebialabs.com/deployit/synthetic synthetic.xsd" xmlns="http://www.xebialabs.com/deployit/synthetic" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+<type type="sharepoint.TokenServer" extends="configuration.HttpConnection">
+  <property name="url" />
+  <property name="username" />
+  <property name="password" password="true" />
+</type>
+
+<type type="sharepoint.Site" extends="configuration.HttpConnection">
+    <property name="scriptLocation" hidden="true" default="sharepoint/CheckConnection.py" />
+    <property name="url" />
+    <property name="site" required="false" />
+    <property name="username" />
+    <property name="password" password="true" />
+    <property name="tokenServer" kind="ci" referenced-type="sharepoint.TokenServer" />
+</type>
+
+<type type="sharepoint.InspectFolder" extends="xlrelease.PythonScript">
+    <property name="scriptLocation" default="sharepoint/InspectFolder.py" />
+    <property name="folderUrl" category="input" />
+    <property name="sourceSite" category="input" kind="ci" referenced-type="sharepoint.Site" />
+</type>
+
+<type type="sharepoint.MoveFile" extends="xlrelease.PythonScript">
+    <property name="scriptLocation" default="sharepoint/MoveFile.py" />
+    <property name="sourcePath" category="input" />
+    <property name="destinationPath" category="input" />
+    <property name="sourceSite" category="input" kind="ci" referenced-type="sharepoint.Site" />
+</type>
+
+<
+<type type="sharepoint.CopyFile" extends="xlrelease.PythonScript">
+    <property name="scriptLocation" default="sharepoint/CopyFile.py" />
+    <property name="sourcePath" category="input" />
+    <property name="destinationPath" category="input" />
+    <property name="sourceSite" category="input" kind="ci" referenced-type="sharepoint.Site" />
+</type>
+
+<type type="sharepoint.CopyFolder" extends="xlrelease.PythonScript">
+    <property name="scriptLocation" default="sharepoint/CopyFolder.py" />
+    <property name="sourcePath" category="input" />
+    <property name="destinationPath" category="input" />
+    <property name="sourceSite" category="input" kind="ci" referenced-type="sharepoint.Site" />
+</type>
+
+<type type="sharepoint.MoveFolder" extends="xlrelease.PythonScript">
+    <property name="scriptLocation" default="sharepoint/MoveFolder.py" />
+    <property name="sourcePath" category="input" />
+    <property name="destinationPath" category="input" />
+    <property name="sourceSite" category="input" kind="ci" referenced-type="sharepoint.Site" />
+</type>
+
+<type type="sharepoint.MoveAcrossSites" extends="xlrelease.PythonScript">
+    <property name="scriptLocation" default="sharepoint/MoveAcrossSites.py" />
+    <property name="sourcePath" category="input" />
+    <property name="destinationPath" category="input" />
+    <property name="sourceSite" category="input" kind="ci" referenced-type="sharepoint.Site" />
+    <property name="destinationSite" category="input" kind="ci" referenced-type="sharepoint.Site"/>
+</type>
+
+<type type="sharepoint.CopyAcrossSites" extends="xlrelease.PythonScript">
+    <property name="scriptLocation" default="sharepoint/CopyAcrossSites.py" />
+    <property name="sourcePath" category="input" />
+    <property name="destinationPath" category="input" />
+    <property name="sourceSite" category="input" kind="ci" referenced-type="sharepoint.Site" />
+    <property name="destinationSite" category="input" kind="ci" referenced-type="sharepoint.Site"/>
+</type>
+
+</synthetic>
